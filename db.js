@@ -17,31 +17,30 @@ const indexedDB =
   window.shimIndexedDB;
 
 
+// Opens/Creates a new database;
+// Takes a string as a name and an integer as the version number (1 by default)
 const request = indexedDB.open("userDB", 1);
-
 
 // Runs only once, when DB first created or version is changed.
 request.onupgradeneeded = ({ target }) => {
   let db = target.result;  // or request.result
 
+  //To store something in IndexedDB, we need an object store.
   // creating an object Store akin to creating a table in our DB.  
-  // keyPath specified my 'primary key';
+  // keyPath akin to 'primary key'. What we query our db on.;
   db.createObjectStore("usersStore", { keyPath: 'userID' });
   // can also set to autoIncrement 
   //db.createObjectStore("usersStore", { autoIncrement: true });
 
-
 };
 
+//Opening succeeded, database is ready.
 request.onsuccess = ({ target }) => {
-  db = target.result;
+  db = target.result; // or request.result
 
-  // check if app is online before reading from db
-  if (navigator.onLine) {
-    checkDatabase();
-  }
 };
 
+//Opening failed.
 request.onerror = function(event) {
-  console.log("Woops! " + event.target.errorCode);
+  console.log("IndexedDB error!:" ,  event.target.errorCode);
 };
