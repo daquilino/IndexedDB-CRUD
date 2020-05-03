@@ -7,3 +7,10 @@ IndexedDB demo.
 - Create an Object Store (similar to a table)
 - Create an Index(es) 
 - Transactions (queries)
+
+### CRUD EXAMPLES
+
+#### CREATE
+#### READ
+#### UPDATE
+#### DELETE
