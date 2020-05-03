@@ -20,3 +20,13 @@ IndexedDB demo.
   - DELETE RECORD
   - DELETE OBJECT STORE
   - DELETE DB
+
+
+
+transaction basics
+For every transaction
+1. open a transaction
+2. get a refference to the store
+3. do your stuff
+4. onsuccess/onerroe
+5 oncomplete
