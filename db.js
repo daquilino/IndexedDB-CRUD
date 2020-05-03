@@ -7,6 +7,8 @@ store - akin to a table in our database
 index - allows you to query db using different fields other than keyPath
 
 
+
+
 */
 const indexedDB =
   window.indexedDB ||
@@ -15,6 +17,7 @@ const indexedDB =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
+let db, store, tx, index;
 
 // Opens/Creates a new database;
 // Takes a string as a name and an integer as the version number (1 by default)
@@ -29,30 +32,56 @@ request.onupgradeneeded = ({ target }) => {
   //To store something in IndexedDB, we need an object store.
   // creating an object Store akin to creating a table in our DB.  
   // keyPath akin to 'primary key'. What we query our db on.;
-  db.createObjectStore("usersStore", { keyPath: 'userID' });
+  db.createObjectStore("userStore", { keyPath: 'userID' });
   // can also set to autoIncrement 
-  //db.createObjectStore("usersStore", { autoIncrement: true });
+  //db.createObjectStore("userStore", { autoIncrement: true });
 
 };
 
 //Opening succeeded, will run everytime (if open successful).
 request.onsuccess = ({ target }) => {
   console.log("onsuccess");
-  // 
+  // Assigns our global variables, db, tx, store 
   db = target.result; // or request.result
 
 };
 
 //Opening failed.
-request.onerror = function(event) {
-  console.log("IndexedDB error!:" ,  event.target.errorCode);
+request.onerror = function (event) {
+
+  console.log("IndexedDB error!:", event.target.errorCode);
 };
 
+// Opens  a transaction to create a new user in the db.
+function createUser(user) {
 
-function createUser (user){
+  console.log('creating user....')
 
+  user = {
+    userID: 3,
+    firstName: "Leo",
+    lastName: "Jeffery",
+    state: "New York"
+  }
 
+  let tx = db.transaction("userStore", "readwrite");
+  let store = tx.objectStore("userStore")
+  let request = store.add(user)
 
+  // if request failed
+  request.onerror = function (e) {
+    console.log("asldkja;sldkjf;asldkjfa;lskdjf;laksjdf");
+    console.log("Error", e.target.error.name);
+  }
 
+  // if request was successful
+  request.onsuccess = function (e) {
+    console.log("User Added");
+  }
+
+  // when transaction in complete 
+  tx.oncomplete = function () {
+    console.log("tx closed createUser")
+  }
 
 }
