@@ -7,7 +7,6 @@ store - akin to a table in our database
 index - allows you to query db using different fields other than keyPath
 
 
-
 */
 const indexedDB =
   window.indexedDB ||
@@ -23,6 +22,8 @@ const request = indexedDB.open("userDB", 1);
 
 // Runs only once, when DB first created or version is changed.
 request.onupgradeneeded = ({ target }) => {
+  console.log('onupgradedneeded');
+
   let db = target.result;  // or request.result
 
   //To store something in IndexedDB, we need an object store.
@@ -34,8 +35,10 @@ request.onupgradeneeded = ({ target }) => {
 
 };
 
-//Opening succeeded, database is ready.
+//Opening succeeded, will run everytime (if open successful).
 request.onsuccess = ({ target }) => {
+  console.log("onsuccess");
+  // 
   db = target.result; // or request.result
 
 };
@@ -44,3 +47,12 @@ request.onsuccess = ({ target }) => {
 request.onerror = function(event) {
   console.log("IndexedDB error!:" ,  event.target.errorCode);
 };
+
+
+function createUser (user){
+
+
+
+
+
+}
