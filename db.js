@@ -7,8 +7,6 @@ store - akin to a table in our database
 index - allows you to query db using different fields other than keyPath
 
 
-
-
 */
 const indexedDB =
   window.indexedDB ||
@@ -17,7 +15,7 @@ const indexedDB =
   window.msIndexedDB ||
   window.shimIndexedDB;
 
-let db, store, tx, index;
+let db;  
 
 // Opens/Creates a new database;
 // Takes a string as a name and an integer as the version number (1 by default)
@@ -70,7 +68,6 @@ function createUser(user) {
 
   // if request failed
   request.onerror = function (e) {
-    console.log("asldkja;sldkjf;asldkjfa;lskdjf;laksjdf");
     console.log("Error", e.target.error.name);
   }
 
@@ -82,6 +79,25 @@ function createUser(user) {
   // when transaction in complete 
   tx.oncomplete = function () {
     console.log("tx closed createUser")
+  }
+
+}
+
+
+// Clears Entire userStore data.
+function clearUsers(){
+  let tx = db.transaction("userStore", "readwrite");
+  let store = tx.objectStore("userStore")
+  let request = store.clear();
+
+  // if request failed
+  request.onerror = function (e) {
+    console.log("Error", e.target.error.name);
+  }
+
+  // if request was successful
+  request.onsuccess = function (e) {
+    console.log("User Store Cleared");
   }
 
 }
