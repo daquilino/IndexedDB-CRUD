@@ -9,7 +9,7 @@ IndexedDB demo.
 - Transactions (queries)
 
 ## Basic CRUD Methods
-Where **store** refers to object store transactions are run on.
+Where **store** refers to object store transactions are envoked on.
 - ### CREATE
   - **store.put(value, [key])** - Add the value to the store. The key is supplied only if the object store did not have keyPath or autoIncrement option. If there’s already a value with same key, it will be replaced.
 
