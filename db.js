@@ -55,13 +55,7 @@ function createUser(user) {
 
   console.log('creating user....')
 
-  user = {
-    userID: 3,
-    firstName: "Leo",
-    lastName: "Jeffery",
-    state: "New York"
-  }
-
+ 
   let tx = db.transaction("userStore", "readwrite");
   let store = tx.objectStore("userStore")
   let request = store.add(user)
