@@ -1,5 +1,7 @@
 /*
- userID, firstName, lastName, state
+We will be creating a phoneBookDB with a phoneBookStore to store contacts.
+Each contact will have the following fields: firstName, lastName, email, phoneNumber
+
 
 db - database
 tx - transaction - a query 
@@ -19,7 +21,7 @@ let db;
 
 // Opens/Creates a new database;
 // Takes a string as a name and an integer as the version number (1 by default)
-const request = indexedDB.open("userDB", 1);
+const request = indexedDB.open("phoneBookDB", 1);
 
 // Runs only once, when DB first created or version is changed.
 request.onupgradeneeded = ({ target }) => {
@@ -27,12 +29,13 @@ request.onupgradeneeded = ({ target }) => {
 
   let db = target.result;  // or request.result
 
-  //To store something in IndexedDB, we need an object store.
-  // creating an object Store akin to creating a table in our DB.  
+  // An object Store is akin to creating a table in our DB.  
+  
   // keyPath akin to 'primary key'. What we query our db on.;
-  db.createObjectStore("userStore", { keyPath: 'userID' });
-  // can also set to autoIncrement 
-  //db.createObjectStore("userStore", { autoIncrement: true });
+  // db.createObjectStore("phoneBookStore", { keyPath: 'userID' });
+  
+  // Or we can also set to autoIncrement 
+  db.createObjectStore("phoneBookStore", { autoIncrement: true });
 
 };
 
@@ -51,14 +54,14 @@ request.onerror = function (event) {
 };
 
 // Opens  a transaction to create a new user in the db.
-function createUser(user) {
+function addContact(contact) {
 
-  console.log('creating user....')
+  console.log('creating contact....')
 
  
-  let tx = db.transaction("userStore", "readwrite");
-  let store = tx.objectStore("userStore")
-  let request = store.add(user)
+  let tx = db.transaction("phoneBookStore", "readwrite");
+  let store = tx.objectStore("phoneBookStore")
+  let request = store.add(contact)
 
   // if request failed
   request.onerror = function (e) {
@@ -67,21 +70,21 @@ function createUser(user) {
 
   // if request was successful
   request.onsuccess = function (e) {
-    console.log("User Added");
+    console.log("Contact Added");
   }
 
   // when transaction in complete 
   tx.oncomplete = function () {
-    console.log("tx closed createUser")
+    console.log("transaction complete do something here")
   }
 
 }
 
 
-// Clears Entire userStore data.
-function clearUsers(){
-  let tx = db.transaction("userStore", "readwrite");
-  let store = tx.objectStore("userStore")
+// Clears Entire phoneBookStore data.
+function clearphoneBookStore(){
+  let tx = db.transaction("phoneBookStore", "readwrite");
+  let store = tx.objectStore("phoneBookStore")
   let request = store.clear();
 
   // if request failed
@@ -91,7 +94,7 @@ function clearUsers(){
 
   // if request was successful
   request.onsuccess = function (e) {
-    console.log("User Store Cleared");
+    console.log("phoneBookStore Cleared");
   }
 
 }
