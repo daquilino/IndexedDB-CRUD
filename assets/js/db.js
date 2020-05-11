@@ -87,7 +87,7 @@ function getAllContacts() {
   console.log('getting all contact....')
 
 
-  let tx = db.transaction("phoneBookStore", "read");
+  let tx = db.transaction("phoneBookStore", "readwrite");
   let store = tx.objectStore("phoneBookStore")
   let request = store.getAll()
 
