@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="assets/css/style.css">    
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>IndexedDB CRUD Phone Book</title>
 </head>
 
@@ -18,13 +18,15 @@
         <p class="lead">This is a simple phone book demonstrating CRUD operations in an IndexedDB database! </p>
         <button id="allBtn" class="btn btn-primary">All Contacts</button>
         <button id="findBtn" class="btn btn-primary">Find Contact</button>
-        <button id="addModalBtn" class="btn btn-primary">Add Contact</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addContactModal">
+            Add Contact
+        </button>
     </div>
 
     <div class="container">
 
         <!-- Modal to Add a Contact -->
-        <div class="modal" tabindex="-1" role="dialog">
+        <div id="addContactModal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -64,7 +66,7 @@
                     </div>
                 </div>
             </div>
-      </div>  <!--  End Modal -->
+        </div> <!--  End Modal -->
 
     </div>
 
