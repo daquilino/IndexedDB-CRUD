@@ -8,6 +8,7 @@ const lnameInput = document.querySelector("#lnameInput");
 const emailInput = document.querySelector("#emailInput");
 const telInput = document.querySelector("#telInput");
 const tbody = document.querySelector("tbody");
+const getAllBtn = document.querySelector("#getAllBtn")
 
 
 addContactBtn.addEventListener("click", e => {
@@ -47,6 +48,11 @@ function clearTable (){
 function populateAllContacts (){
 
     clearTable();
+    
+    const Contacts = getAllContacts();
+
+    console.log(Contacts);
+
 
 /*
  <tr>
@@ -58,3 +64,5 @@ function populateAllContacts (){
 
 */
 }
+
+getAllBtn.addEventListener("click", populateAllContacts);
