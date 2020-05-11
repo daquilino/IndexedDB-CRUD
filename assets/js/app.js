@@ -30,19 +30,23 @@ addContactBtn.addEventListener("click", e => {
 
     console.log("new contact", newContact)
 
-    // createUser(newUser);
+    addContact(newContact);
  
 })
 
 
 // clears out the tbody of out  table
 function clearTable (){
-
+    while(tbody.firstChild){
+        tbody.firstChild.remove()
+    }
 }
 
 
 // gets all contacts from IndexedDB and populates table.
 function populateAllContacts (){
+
+    clearTable();
 
 /*
  <tr>
