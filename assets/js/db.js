@@ -81,6 +81,36 @@ function addContact(contact) {
 }
 
 
+// Opens a transaction queries all contacts. 
+function getAllContacts() {
+
+  console.log('getting all contact....')
+
+
+  let tx = db.transaction("phoneBookStore", "read");
+  let store = tx.objectStore("phoneBookStore")
+  let request = store.getAll()
+
+  // if request failed
+  request.onerror = function (e) {
+    console.log("Error", e.target.error.name);
+  }
+
+  // if request was successful
+  request.onsuccess = function (e) {
+    console.log("Contact Added");
+    console.log("all contacts:", request.result)
+  }
+
+  // when transaction in complete 
+  tx.oncomplete = function () {
+    console.log("transaction complete do something here")
+  }
+
+}
+
+
+
 // Clears Entire phoneBookStore data.
 function clearphoneBookStore(){
   let tx = db.transaction("phoneBookStore", "readwrite");
