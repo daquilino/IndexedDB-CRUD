@@ -57,7 +57,7 @@ function populateAllContacts (){
                 let contact = contacts[i];
                 let newRow = `
                 <tr>
-                    <th>${contact.firstName}</th>
+                    <td>${contact.firstName}</td>
                     <td>${contact.lastName}</td>
                     <td>${contact.email}</td>
                     <td>${contact.phoneNumber}</td>
@@ -80,19 +80,6 @@ function populateAllContacts (){
             }
         } 
     });
-
-    
-
-
-/*
- <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-</tr>
-
-*/
 }
 
 getAllBtn.addEventListener("click", populateAllContacts);
