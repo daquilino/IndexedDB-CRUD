@@ -1,13 +1,13 @@
 console.log("app.js loaded!")
 
 
-const addUserForm = document.querySelector("#addUserForm");
+const addContactForm = document.querySelector("#addContact");
 const userIdInput = document.querySelector("#userId");
 const fnameInput = document.querySelector("#fname");
 const lnameInput = document.querySelector("#lname");
 const stateInput = document.querySelector("#state");
 
-addUserForm.addEventListener("submit", e => {
+addContactForm.addEventListener("submit", e => {
     e.preventDefault();
     console.log("user form submitted")
 
