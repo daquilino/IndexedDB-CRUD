@@ -19,32 +19,48 @@
 
     <div class="container">
 
+        <!-- Modal to Add a Contact -->
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add A Contact</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addContact">
+                            <div class="form-group">
+                                <label for="fnameInput">First Name</label>
+                                <input type="text" class="form-control" id="fnameInput">
 
-        <h2> ADD A CONTACT </h2>
-        <form>
-            <div class="form-group">
-                <label for="fnameInput">First Name</label>
-                <input type="text" class="form-control" id="fnameInput">
+                            </div>
+                            <div class="form-group">
+                                <label for="lnameInput">Last Name</label>
+                                <input type="text" class="form-control" id="lnameInput">
+                            </div>
 
-            </div>
-            <div class="form-group">
-                <label for="lnameInput">Last Name</label>
-                <input type="text" class="form-control" id="lnameInput">
-            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
 
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
-               
-            </div>
-            <div class="form-group">
-                <label for="telInput">Phone Number</label>
-                <input type="tel" class="form-control" id="telInput" placeholder="123-456-7890">
-                <small class="form-text text-muted">Format: 123-456-7890</small>
-            </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="telInput">Phone Number</label>
+                                <input type="tel" class="form-control" id="telInput" placeholder="123-456-7890">
+                                <small class="form-text text-muted">Format: 123-456-7890</small>
+                            </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" form="addContact">Save changes</button>
+                    </div>
+                </div>
+            </div>
+      </div>  <!--  End Modal -->
 
     </div>
 
