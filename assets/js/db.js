@@ -99,12 +99,7 @@ function getAllContacts() {
   // if request was successful
   request.onsuccess = function (e) {
     console.log("Contact Added");
-    console.log("all contacts:", request.result)
-  }
-
-  // when transaction in complete 
-  tx.oncomplete = function () {
-    console.log("transaction complete do something here")
+    return request.results
   }
 
 }
