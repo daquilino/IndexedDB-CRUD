@@ -7,6 +7,7 @@ const fnameInput = document.querySelector("#fnameInput");
 const lnameInput = document.querySelector("#lnameInput");
 const emailInput = document.querySelector("#emailInput");
 const telInput = document.querySelector("#telInput");
+const tbody = document.querySelector("tbody");
 
 
 addContactBtn.addEventListener("click", e => {
@@ -33,3 +34,23 @@ addContactBtn.addEventListener("click", e => {
  
 })
 
+
+// clears out the tbody of out  table
+function clearTable (){
+
+}
+
+
+// gets all contacts from IndexedDB and populates table.
+function populateAllContacts (){
+
+/*
+ <tr>
+    <th scope="row">1</th>
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>@mdo</td>
+</tr>
+
+*/
+}
