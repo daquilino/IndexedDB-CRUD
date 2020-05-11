@@ -1,7 +1,7 @@
 console.log("app.js loaded!")
 
 
-const addContactForm = document.querySelector("#addContact");
+const addContactBtn = document.querySelector("#addContactBtn");
 
 const fnameInput = document.querySelector("#fnameInput");
 const lnameInput = document.querySelector("#lnameInput");
@@ -9,23 +9,25 @@ const emailInput = document.querySelector("#emailInput");
 const telInput = document.querySelector("#telInput");
 
 
-addContactForm.addEventListener("submit", e => {
+addContactBtn.addEventListener("click", e => {
     e.preventDefault();
-    // console.log("user form submitted")
+     console.log("Contact Added")
 
-    // let userID = userIdInput.value.trim()
-    // let firstName = fnameInput.value.trim()
-    // let lastName = lnameInput.value.trim()
-    // let state = stateInput.value.trim()
+    
+    let firstName = fnameInput.value.trim()
+    let lastName = lnameInput.value.trim()
+    let email = emailInput.value.trim()
+    let phoneNumber = telInput.value.trim()
 
 
-    // let newUser = {
-    //     userID,
-    //     firstName,
-    //     lastName,
-    //     state
-    // }
+    let newContact = {
+        firstName,
+        lastName,
+        email,
+        phoneNumber
+    }
 
+    console.log("new contact", newContact)
 
     // createUser(newUser);
  
