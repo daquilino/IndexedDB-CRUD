@@ -49,9 +49,11 @@ function populateAllContacts (){
 
     clearTable();
     
-    const Contacts = getAllContacts();
+    getAllContacts(contacts =>{
+        console.log("Contacts:", contacts);
+    });
 
-    console.log(Contacts);
+    
 
 
 /*
