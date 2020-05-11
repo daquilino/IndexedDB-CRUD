@@ -82,7 +82,7 @@ function addContact(contact) {
 
 
 // Opens a transaction queries all contacts. 
-function getAllContacts() {
+function getAllContacts(cb) {
 
   console.log('getting all contact....')
 
@@ -99,11 +99,9 @@ function getAllContacts() {
   // if request was successful
   request.onsuccess = function (e) {
     console.log("Contact Added");
-    return request.results
+    cb(request.result)
   }
-
 }
-
 
 
 // Clears Entire phoneBookStore data.
