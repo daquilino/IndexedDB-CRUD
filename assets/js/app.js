@@ -83,3 +83,9 @@ function populateAllContacts (){
 }
 
 getAllBtn.addEventListener("click", populateAllContacts);
+
+
+//Queries and populates contacts when page loads.
+
+setTimeout(populateAllContacts, 2000); // hack to work
+//populateAllContacts();   // Error, called before db is defined.
