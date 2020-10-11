@@ -35,8 +35,10 @@ request.onupgradeneeded = ({ target }) => {
   // db.createObjectStore("phoneBookStore", { keyPath: 'userID' });
   
   // Or we can also set to autoIncrement 
-  db.createObjectStore("phoneBookStore", { autoIncrement: true });
+  let store = db.createObjectStore("phoneBookStore", { autoIncrement: true});
 
+  // created an index so we can query our store by lastName.
+  store.createIndex("lname", "lastName");
 };
 
 //Opening succeeded, will run everytime (if open successful).
@@ -44,6 +46,9 @@ request.onsuccess = ({ target }) => {
   console.log("onsuccess");
   // Assigns our global variables, db, tx, store 
   db = target.result; // or request.result
+
+  //When app is first loaded. When db is opened we query and display contacts
+  populateAllContacts()
 
 };
 
@@ -61,7 +66,7 @@ function addContact(contact) {
  
   let tx = db.transaction("phoneBookStore", "readwrite");
   let store = tx.objectStore("phoneBookStore")
-  let request = store.add(contact)
+  let request = store.add(contact) // value contact, key contact.lastName
 
   // if request failed
   request.onerror = function (e) {
@@ -71,6 +76,8 @@ function addContact(contact) {
   // if request was successful
   request.onsuccess = function (e) {
     console.log("Contact Added");
+    populateAllContacts()
+    
   }
 
   // when transaction in complete 
@@ -86,7 +93,7 @@ function getAllContacts(cb) {
 
   console.log('getting all contact....')
 
-
+  // When creating a transaction for just READING (get or getAll)
   let tx = db.transaction("phoneBookStore", "readwrite");
   let store = tx.objectStore("phoneBookStore")
   let request = store.getAll()
@@ -102,6 +109,24 @@ function getAllContacts(cb) {
     cb(request.result)
   }
 }
+
+// finds One contact by lastName using Index.
+function findContact(lastName){
+
+  let tx = db.transaction("phoneBookStore", "readwrite");
+  let store = tx.objectStore("phoneBookStore")
+  let index = store.index("lname")
+
+  let request = index.get(lastName);
+
+  request.onsuccess = data => {
+    console.log("get 2", request.result)
+  }
+}
+
+
+
+
 
 
 // Clears Entire phoneBookStore data.
