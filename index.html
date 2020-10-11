@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -16,11 +17,18 @@
     <div class="jumbotron">
         <h2 class="display-5">IndexedDB Phone Book</h2>
         <p class="lead">This is a simple phone book demonstrating CRUD operations in an IndexedDB database! </p>
-        <button id="getAllBtn" class="btn btn-primary">All Contacts</button>
-        <button id="findBtn" class="btn btn-primary">Find Contact</button>
+        <button id="getAllBtn" class="btn btn-primary">View All Contacts</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addContactModal">
-            Add Contact
+            Add A Contact
         </button>
+        <hr>
+        <form class="form-inline">   
+            <div class="form-group mx-sm-3 mb-2">  
+              <input type="text" class="form-control" id="findLastName" placeholder="Last Name">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Find A Contact</button>
+          </form>
+
     </div>
 
     <div class="container">
@@ -62,7 +70,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="addContactBtn">Add Contact</button>
+                        <button type="button" class="btn btn-primary" id="addContactBtn" data-dismiss="modal">Add Contact</button>
                     </div>
                 </div>
             </div>
@@ -108,6 +116,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="assets/js/utils.js"></script>
     <script src="assets/js/db.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
