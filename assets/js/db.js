@@ -35,7 +35,7 @@ request.onupgradeneeded = ({ target }) => {
   // db.createObjectStore("phoneBookStore", { keyPath: 'userID' });
   
   // Or we can also set to autoIncrement 
-  let store = db.createObjectStore("phoneBookStore", { autoIncrement: true});
+  let store = db.createObjectStore("phoneBookStore", { keyPath: "uuid"});
 
   // created an index so we can query our store by lastName.
   store.createIndex("lname", "lastName");
@@ -62,11 +62,16 @@ request.onerror = function (event) {
 function addContact(contact) {
 
   console.log('creating contact....')
+  
+  // using uuid npmp package (index.html) to generate unique uuid for contact
+  contact.uuid = uuidv4();
+
+  console.log("contact", contact)
 
  
   let tx = db.transaction("phoneBookStore", "readwrite");
   let store = tx.objectStore("phoneBookStore")
-  let request = store.add(contact) // value contact, key contact.lastName
+  let request = store.add(contact) 
 
   // if request failed
   request.onerror = function (e) {
@@ -125,7 +130,16 @@ function findContact(lastName){
 }
 
 
+//delete contact by uuid
+function deleteContact(uuid){
+  let tx = db.transaction("phoneBookStore", "readwrite");
+  let store = tx.objectStore("phoneBookStore")
 
+  let request = store.delete(uuid);
+
+  request.onsuccess = ()=> populateAllContacts();
+
+}
 
 
 
