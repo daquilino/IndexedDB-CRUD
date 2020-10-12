@@ -18,8 +18,6 @@ function clearAddContactModalForm(){
 }
 
 
-
-
 addContactBtn.addEventListener("click", e => {
     e.preventDefault();
      console.log("Contact Added")
@@ -49,4 +47,19 @@ addContactBtn.addEventListener("click", e => {
 
 
 getAllBtn.addEventListener("click", populateAllContacts);
+
+// Icon click listener delegation
+document.addEventListener("click", event =>{
+
+
+    if(event.target.classList.contains("deleteIcon")){
+        console.log("delete")
+    }
+
+    if(event.target.classList.contains("updateIcon")){
+        console.log("update")
+
+    }
+
+})
 
