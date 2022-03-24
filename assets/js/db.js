@@ -32,10 +32,13 @@ request.onupgradeneeded = ({ target }) => {
   // An object Store is akin to creating a table in our DB.  
   
   // keyPath akin to 'primary key'. What we query our db on.;
-  // db.createObjectStore("phoneBookStore", { keyPath: 'userID' });
-  
-  // Or we can also set to autoIncrement 
   let store = db.createObjectStore("phoneBookStore", { keyPath: "uuid"});
+
+  
+  // Or we can have the keyPath set to autoIncrement 
+  // EXAMPLE: 
+  // db.createObjectStore('new_pizza', { autoIncrement: true });
+
 
   // created an index so we can query our store by lastName.
   store.createIndex("lname", "lastName");

@@ -1,4 +1,4 @@
-// Here are our functions used in add.js and db.js
+// Here are our functions used in app.js and db.js
 // I moved them here so db.js can have access to them, like diaplayContacts 
 
 const tbody = document.querySelector("tbody");
